@@ -64,8 +64,12 @@ export default {
       drawer: !this.$vuetify.breakpoint.smAndDown,
       items: [
         { icon: "mdi-home", title: "Beranda", to: "home" },
-        { icon: "mdi-account", title: "Kategori", to: "category.index" },
-        { icon: "mdi-account", title: "Tag", to: "tag.index" },
+        {
+          icon: "mdi-view-list",
+          title: "Kategori",
+          to: "category.index",
+        },
+        { icon: "mdi-tag", title: "Tag", to: "tag.index" },
         { icon: "mdi-account", title: "Employee", to: "employee.index" },
       ],
       miniVariant: false,

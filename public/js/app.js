@@ -1952,11 +1952,11 @@ __webpack_require__.r(__webpack_exports__);
         title: "Beranda",
         to: "home"
       }, {
-        icon: "mdi-account",
+        icon: "mdi-view-list",
         title: "Kategori",
         to: "category.index"
       }, {
-        icon: "mdi-account",
+        icon: "mdi-tag",
         title: "Tag",
         to: "tag.index"
       }, {
