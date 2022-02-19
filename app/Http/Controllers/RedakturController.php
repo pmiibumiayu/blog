@@ -11,13 +11,13 @@ class RedakturController extends Controller
     public function index(Request $request)
     {
         $data = Redaktur::when($request->sort_by, function ($query, $value) {
-                $query->orderBy($value, request('order_by', 'asc'));
-            })
+            $query->orderBy($value, request('order_by', 'asc'));
+        })
             ->when(!isset($request->sort_by), function ($query) {
                 $query->latest();
             })
             ->when($request->search, function ($query, $value) {
-                $query->where('redakturNama', 'LIKE', '%'.$value.'%');
+                $query->where('redakturNama', 'LIKE', '%' . $value . '%');
             })
             ->paginate($request->page_size ?? 10);
         return Inertia::render('redaktur/index', [
@@ -29,41 +29,50 @@ class RedakturController extends Controller
     {
         $data = $this->validate($request, [
             'redakturNama' => 'required|string',
-            'redakturEmail' => 'required|string',
+            'redakturEmail' => 'required|email',
             'redakturNomor' => 'required|string',
             'redakturAlamat' => 'required|string',
             'redakturUniv' => 'required|string',
             'redakturFakultas' => 'required|string',
             'redakturProdi' => 'required|string',
-            'redakturKuliah' => 'required|string',
-            'redakturMapaba' => 'required|string',
-            'redakturFoto' => 'required|string',
+            'redakturKuliah' => 'required|integer',
+            'redakturMapaba' => 'required|integer',
+            'redakturFoto' => 'required|file',
         ]);
         Redaktur::create($data);
         return redirect()->back()->with('message', [
             'type' => 'success',
-            'text' => 'Berhasil Menambah Redaktur Baru!',
+            'text' => 'Berhasil Menambah Redaktur Baru !',
         ]);
     }
 
-    public function update(Category $category, Request $request)
+    public function update(Redaktur $redaktur, Request $request)
     {
         $data = $this->validate($request, [
-            'categoryName' => 'required|string'
+            'redakturNama' => 'required|string',
+            'redakturEmail' => 'required|email',
+            'redakturNomor' => 'required|string',
+            'redakturAlamat' => 'required|string',
+            'redakturUniv' => 'required|string',
+            'redakturFakultas' => 'required|string',
+            'redakturProdi' => 'required|string',
+            'redakturKuliah' => 'required|integer',
+            'redakturMapaba' => 'required|integer',
+            'redakturFoto' => 'required|file',
         ]);
-        $category->update($data);
+        $redaktur->update($data);
         return redirect()->back()->with('message', [
             'type' => 'success',
-            'text' => 'Berhasil Mengubah Kategori!',
+            'text' => 'Berhasil Mengubah Redaktur !',
         ]);
     }
 
-    public function destroy(Category $category)
+    public function destroy(Redaktur $redaktur)
     {
-        $category->delete();
+        $redaktur->delete();
         return redirect()->back()->with('message', [
             'type' => 'success',
-            'text' => 'Berhasil Menghapus Kategori!',
+            'text' => 'Berhasil Menghapus Redaktur !',
         ]);
     }
 }

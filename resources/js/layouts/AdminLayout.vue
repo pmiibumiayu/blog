@@ -70,6 +70,7 @@ export default {
           to: "category.index",
         },
         { icon: "mdi-tag", title: "Tag", to: "tag.index" },
+        { icon: "mdi-contacts", title: "Redaktur", to: "redaktur.index" },
         { icon: "mdi-account", title: "Employee", to: "employee.index" },
       ],
       miniVariant: false,
