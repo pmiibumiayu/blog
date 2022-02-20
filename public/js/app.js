@@ -3401,6 +3401,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["items"],
@@ -4233,7 +4235,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#preview {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\n}\n#preview img {\r\n  max-width: 100%;\r\n  max-height: 500px;\r\n  margin-bottom: 2em;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#preview {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#preview img {\n  max-width: 100%;\n  max-height: 500px;\n  margin-bottom: 2em;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31923,231 +31925,243 @@ var render = function() {
         },
         [
           _c(
-            "v-card",
+            "form",
+            { attrs: { enctype: "multipart/form-data" } },
             [
               _c(
-                "v-toolbar",
-                {
-                  staticClass: "text-h6",
-                  attrs: { dense: "", dark: "", color: "primary" }
-                },
-                [_vm._v(_vm._s(_vm.formTitle))]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-text",
-                { staticClass: "pt-4" },
-                [
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Nama Lengkap",
-                      "error-messages": _vm.form.errors.redakturNama,
-                      type: "text",
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturNama,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturNama", $$v)
-                      },
-                      expression: "form.redakturNama"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Email",
-                      "error-messages": _vm.form.errors.redakturEmail,
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturEmail,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturEmail", $$v)
-                      },
-                      expression: "form.redakturEmail"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Nomor WA",
-                      "error-messages": _vm.form.errors.redakturNomor,
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturNomor,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturNomor", _vm._n($$v))
-                      },
-                      expression: "form.redakturNomor"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-textarea", {
-                    attrs: {
-                      label: "Alamat",
-                      "error-messages": _vm.form.errors.redakturAlamat,
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturAlamat,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturAlamat", $$v)
-                      },
-                      expression: "form.redakturAlamat"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Asal Kampus",
-                      "error-messages": _vm.form.errors.redakturUniv,
-                      type: "text",
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturUniv,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturUniv", $$v)
-                      },
-                      expression: "form.redakturUniv"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Fakultas",
-                      "error-messages": _vm.form.errors.redakturFakultas,
-                      type: "text",
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturFakultas,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturFakultas", $$v)
-                      },
-                      expression: "form.redakturFakultas"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Prodi",
-                      "error-messages": _vm.form.errors.redakturProdi,
-                      type: "text",
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturProdi,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturProdi", $$v)
-                      },
-                      expression: "form.redakturProdi"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Tahun Masuk Kuliah",
-                      "error-messages": _vm.form.errors.redakturKuliah,
-                      type: "text",
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturKuliah,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturKuliah", _vm._n($$v))
-                      },
-                      expression: "form.redakturKuliah"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      label: "Angkatan Mapaba",
-                      "error-messages": _vm.form.errors.redakturMapaba,
-                      type: "text",
-                      outlined: "",
-                      dense: ""
-                    },
-                    model: {
-                      value: _vm.form.redakturMapaba,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturMapaba", _vm._n($$v))
-                      },
-                      expression: "form.redakturMapaba"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { attrs: { id: "preview" } }, [
-                    _vm.url ? _c("img", { attrs: { src: _vm.url } }) : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("v-file-input", {
-                    attrs: {
-                      rules: _vm.rules,
-                      "error-messages": _vm.form.errors.redakturFoto,
-                      "show-size": "",
-                      accept: "image/png, image/jpeg, image/bmp",
-                      placeholder: "Pilih sebuah foto",
-                      "prepend-icon": "mdi-camera",
-                      label: "Foto",
-                      outlined: "",
-                      dense: ""
-                    },
-                    on: { change: _vm.onFileChange },
-                    model: {
-                      value: _vm.form.redakturFoto,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "redakturFoto", $$v)
-                      },
-                      expression: "form.redakturFoto"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex" })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-actions",
+                "v-card",
                 [
                   _c(
-                    "v-btn",
+                    "v-toolbar",
                     {
-                      attrs: {
-                        disabled: _vm.form.processing,
-                        text: "",
-                        color: "error"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
+                      staticClass: "text-h6",
+                      attrs: { dense: "", dark: "", color: "primary" }
                     },
-                    [_vm._v("Batal")]
+                    [_vm._v(_vm._s(_vm.formTitle))]
                   ),
                   _vm._v(" "),
-                  _c("v-spacer"),
+                  _c(
+                    "v-card-text",
+                    { staticClass: "pt-4" },
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Nama Lengkap",
+                          "error-messages": _vm.form.errors.redakturNama,
+                          type: "text",
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturNama,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturNama", $$v)
+                          },
+                          expression: "form.redakturNama"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Email",
+                          "error-messages": _vm.form.errors.redakturEmail,
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturEmail,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturEmail", $$v)
+                          },
+                          expression: "form.redakturEmail"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Nomor WA",
+                          "error-messages": _vm.form.errors.redakturNomor,
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturNomor,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturNomor", _vm._n($$v))
+                          },
+                          expression: "form.redakturNomor"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-textarea", {
+                        attrs: {
+                          label: "Alamat",
+                          "error-messages": _vm.form.errors.redakturAlamat,
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturAlamat,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturAlamat", $$v)
+                          },
+                          expression: "form.redakturAlamat"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Asal Kampus",
+                          "error-messages": _vm.form.errors.redakturUniv,
+                          type: "text",
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturUniv,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturUniv", $$v)
+                          },
+                          expression: "form.redakturUniv"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Fakultas",
+                          "error-messages": _vm.form.errors.redakturFakultas,
+                          type: "text",
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturFakultas,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturFakultas", $$v)
+                          },
+                          expression: "form.redakturFakultas"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Prodi",
+                          "error-messages": _vm.form.errors.redakturProdi,
+                          type: "text",
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturProdi,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturProdi", $$v)
+                          },
+                          expression: "form.redakturProdi"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Tahun Masuk Kuliah",
+                          "error-messages": _vm.form.errors.redakturKuliah,
+                          type: "text",
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturKuliah,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturKuliah", _vm._n($$v))
+                          },
+                          expression: "form.redakturKuliah"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          label: "Angkatan Mapaba",
+                          "error-messages": _vm.form.errors.redakturMapaba,
+                          type: "text",
+                          outlined: "",
+                          dense: ""
+                        },
+                        model: {
+                          value: _vm.form.redakturMapaba,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturMapaba", _vm._n($$v))
+                          },
+                          expression: "form.redakturMapaba"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "preview" } }, [
+                        _vm.url
+                          ? _c("img", { attrs: { src: _vm.url } })
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("v-file-input", {
+                        attrs: {
+                          rules: _vm.rules,
+                          "error-messages": _vm.form.errors.redakturFoto,
+                          "show-size": "",
+                          accept: "image/png, image/jpeg, image/bmp",
+                          placeholder: "Pilih sebuah foto",
+                          "prepend-icon": "mdi-camera",
+                          label: "Foto",
+                          outlined: "",
+                          dense: ""
+                        },
+                        on: { change: _vm.onFileChange },
+                        model: {
+                          value: _vm.form.redakturFoto,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "redakturFoto", $$v)
+                          },
+                          expression: "form.redakturFoto"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "d-flex" })
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      attrs: { loading: _vm.form.processing, color: "primary" },
-                      on: { click: _vm.submit }
-                    },
-                    [_vm._v("Simpan")]
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            disabled: _vm.form.processing,
+                            text: "",
+                            color: "error"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.dialog = false
+                            }
+                          }
+                        },
+                        [_vm._v("Batal")]
+                      ),
+                      _vm._v(" "),
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            loading: _vm.form.processing,
+                            color: "primary"
+                          },
+                          on: { click: _vm.submit }
+                        },
+                        [_vm._v("Simpan")]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
@@ -32155,8 +32169,7 @@ var render = function() {
             ],
             1
           )
-        ],
-        1
+        ]
       ),
       _vm._v(" "),
       _c(

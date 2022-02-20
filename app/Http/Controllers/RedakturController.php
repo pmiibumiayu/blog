@@ -27,6 +27,7 @@ class RedakturController extends Controller
 
     public function store(Request $request)
     {
+        ddd($request->redakturFoto->hashName());
         $data = $this->validate($request, [
             'redakturNama' => 'required|string',
             'redakturEmail' => 'required|email',
@@ -37,7 +38,7 @@ class RedakturController extends Controller
             'redakturProdi' => 'required|string',
             'redakturKuliah' => 'required|integer',
             'redakturMapaba' => 'required|integer',
-            'redakturFoto' => 'required|file',
+            'redakturFoto' => 'image|file|max:2000',
         ]);
         Redaktur::create($data);
         return redirect()->back()->with('message', [

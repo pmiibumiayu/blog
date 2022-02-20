@@ -45,112 +45,114 @@
       </template>
     </v-data-table>
     <v-dialog v-model="dialog" max-width="500px" scrollable>
-      <v-card>
-        <v-toolbar dense dark color="primary" class="text-h6">{{
-          formTitle
-        }}</v-toolbar>
-        <v-card-text class="pt-4">
-          <v-text-field
-            v-model="form.redakturNama"
-            label="Nama Lengkap"
-            :error-messages="form.errors.redakturNama"
-            type="text"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model="form.redakturEmail"
-            label="Email"
-            :error-messages="form.errors.redakturEmail"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model.number="form.redakturNomor"
-            label="Nomor WA"
-            :error-messages="form.errors.redakturNomor"
-            outlined
-            dense
-          />
-          <v-textarea
-            v-model="form.redakturAlamat"
-            label="Alamat"
-            :error-messages="form.errors.redakturAlamat"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model="form.redakturUniv"
-            label="Asal Kampus"
-            :error-messages="form.errors.redakturUniv"
-            type="text"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model="form.redakturFakultas"
-            label="Fakultas"
-            :error-messages="form.errors.redakturFakultas"
-            type="text"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model="form.redakturProdi"
-            label="Prodi"
-            :error-messages="form.errors.redakturProdi"
-            type="text"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model.number="form.redakturKuliah"
-            label="Tahun Masuk Kuliah"
-            :error-messages="form.errors.redakturKuliah"
-            type="text"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model.number="form.redakturMapaba"
-            label="Angkatan Mapaba"
-            :error-messages="form.errors.redakturMapaba"
-            type="text"
-            outlined
-            dense
-          />
-          <div id="preview">
-            <img v-if="url" :src="url" />
-          </div>
-          <v-file-input
-            :rules="rules"
-            v-model="form.redakturFoto"
-            :error-messages="form.errors.redakturFoto"
-            show-size
-            accept="image/png, image/jpeg, image/bmp"
-            placeholder="Pilih sebuah foto"
-            prepend-icon="mdi-camera"
-            label="Foto"
-            outlined
-            dense
-            @change="onFileChange"
-          ></v-file-input>
-          <div class="d-flex"></div>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn
-            :disabled="form.processing"
-            text
-            color="error"
-            @click="dialog = false"
-            >Batal</v-btn
-          >
-          <v-spacer />
-          <v-btn :loading="form.processing" color="primary" @click="submit"
-            >Simpan</v-btn
-          >
-        </v-card-actions>
-      </v-card>
+      <form enctype="multipart/form-data">
+        <v-card>
+          <v-toolbar dense dark color="primary" class="text-h6">{{
+            formTitle
+          }}</v-toolbar>
+          <v-card-text class="pt-4">
+            <v-text-field
+              v-model="form.redakturNama"
+              label="Nama Lengkap"
+              :error-messages="form.errors.redakturNama"
+              type="text"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model="form.redakturEmail"
+              label="Email"
+              :error-messages="form.errors.redakturEmail"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model.number="form.redakturNomor"
+              label="Nomor WA"
+              :error-messages="form.errors.redakturNomor"
+              outlined
+              dense
+            />
+            <v-textarea
+              v-model="form.redakturAlamat"
+              label="Alamat"
+              :error-messages="form.errors.redakturAlamat"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model="form.redakturUniv"
+              label="Asal Kampus"
+              :error-messages="form.errors.redakturUniv"
+              type="text"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model="form.redakturFakultas"
+              label="Fakultas"
+              :error-messages="form.errors.redakturFakultas"
+              type="text"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model="form.redakturProdi"
+              label="Prodi"
+              :error-messages="form.errors.redakturProdi"
+              type="text"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model.number="form.redakturKuliah"
+              label="Tahun Masuk Kuliah"
+              :error-messages="form.errors.redakturKuliah"
+              type="text"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model.number="form.redakturMapaba"
+              label="Angkatan Mapaba"
+              :error-messages="form.errors.redakturMapaba"
+              type="text"
+              outlined
+              dense
+            />
+            <div id="preview">
+              <img v-if="url" :src="url" />
+            </div>
+            <v-file-input
+              :rules="rules"
+              v-model="form.redakturFoto"
+              :error-messages="form.errors.redakturFoto"
+              show-size
+              accept="image/png, image/jpeg, image/bmp"
+              placeholder="Pilih sebuah foto"
+              prepend-icon="mdi-camera"
+              label="Foto"
+              outlined
+              dense
+              @change="onFileChange"
+            ></v-file-input>
+            <div class="d-flex"></div>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn
+              :disabled="form.processing"
+              text
+              color="error"
+              @click="dialog = false"
+              >Batal</v-btn
+            >
+            <v-spacer />
+            <v-btn :loading="form.processing" color="primary" @click="submit"
+              >Simpan</v-btn
+            >
+          </v-card-actions>
+        </v-card>
+      </form>
     </v-dialog>
     <v-dialog v-model="dialogDelete" max-width="500">
       <v-card>
