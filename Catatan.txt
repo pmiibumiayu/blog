@@ -1,0 +1,5 @@
+Membuat Factory
+php artisan make:factory RedakturFactory --model=Redaktur
+
+Migrate + Seeding
+php artisan migrate:fresh --seed 

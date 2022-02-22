@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Redaktur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class RedakturController extends Controller
@@ -57,18 +58,30 @@ class RedakturController extends Controller
 
     public function update(Redaktur $redaktur, Request $request)
     {
+        ddd($request);
         $data = $this->validate($request, [
             'redakturNama' => 'required|string',
             'redakturEmail' => 'required|email',
-            'redakturNomor' => 'required|string',
+            'redakturNomor' => 'required|numeric',
             'redakturAlamat' => 'required|string',
             'redakturUniv' => 'required|string',
             'redakturFakultas' => 'required|string',
             'redakturProdi' => 'required|string',
             'redakturKuliah' => 'required|integer',
             'redakturMapaba' => 'required|integer',
-            'redakturFoto' => 'required|file',
+            'redakturFoto' => 'image|nullable|file|max:2000',
         ]);
+        $file = $request->file('redakturFoto');
+        if ($file) {
+            if (!$redaktur->redakturFoto == "default.png") {
+                Storage::delete('redaktur/' . $redaktur->redakturFoto);
+            }
+            $filename = time() . "." . $file->extension();
+            $file->storeAs('redaktur', $filename);
+            $data['redakturFoto'] = $filename;
+        } else {
+            $data['redakturFoto'] = $redaktur->redakturFoto;
+        }
         $redaktur->update($data);
         return redirect()->back()->with('message', [
             'type' => 'success',

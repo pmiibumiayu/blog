@@ -3470,7 +3470,8 @@ __webpack_require__.r(__webpack_exports__);
       rules: [function (value) {
         return !value || value.size < 2000000 || "Avatar size should be less than 2 MB!";
       }],
-      url: null
+      url: null,
+      fotoLama: null
     };
   },
   computed: {
@@ -3518,6 +3519,9 @@ __webpack_require__.r(__webpack_exports__);
       this.url = null;
     },
     editItem: function editItem(item) {
+      var _this2 = this;
+
+      this.url = null;
       this.form.clearErrors();
       this.form.redakturNama = item.redakturNama;
       this.form.redakturEmail = item.redakturEmail;
@@ -3528,8 +3532,15 @@ __webpack_require__.r(__webpack_exports__);
       this.form.redakturProdi = item.redakturProdi;
       this.form.redakturKuliah = item.redakturKuliah;
       this.form.redakturMapaba = item.redakturMapaba;
-      this.form.redakturFoto = item.redakturFoto;
-      this.url = item.redakturFoto;
+      var config = {
+        responseType: "blob"
+      };
+      axios.get("/storage/redaktur/" + item.redakturFoto, config).then(function (response) {
+        _this2.form.redakturFoto = new File([response.data], item.redakturFoto, {
+          type: response.type
+        });
+      });
+      this.url = "/storage/redaktur/" + item.redakturFoto;
       this.isUpdate = true;
       this.itemId = item.id;
       this.dialog = true;
@@ -3539,39 +3550,37 @@ __webpack_require__.r(__webpack_exports__);
       this.dialogDelete = true;
     },
     destroy: function destroy() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.form["delete"](route("redaktur.destroy", this.itemId), {
         preverseScroll: true,
         onSuccess: function onSuccess() {
-          _this2.dialogDelete = false;
-          _this2.itemId = null;
+          _this3.dialogDelete = false;
+          _this3.itemId = null;
         }
       });
     },
     submit: function submit() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (this.isUpdate) {
         this.form.put(route("redaktur.update", this.itemId), {
           preverseScroll: true,
           onSuccess: function onSuccess() {
-            _this3.isLoading = false;
-            _this3.dialog = false;
-            _this3.isUpdate = false;
-            _this3.itemId = null;
-
-            _this3.form.reset();
+            _this4.isLoading = false;
+            _this4.dialog = false;
+            _this4.isUpdate = false;
+            _this4.itemId = null; // this.form.reset();
           }
         });
       } else {
         this.form.post(route("redaktur.store"), {
           preverseScroll: true,
           onSuccess: function onSuccess() {
-            _this3.isLoading = false;
-            _this3.dialog = false;
+            _this4.isLoading = false;
+            _this4.dialog = false;
 
-            _this3.form.reset();
+            _this4.form.reset();
           }
         });
       }
@@ -4243,7 +4252,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#preview {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#preview img {\n  max-width: 100%;\n  max-height: 500px;\n  margin-bottom: 2em;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#preview {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\n}\n#preview img {\r\n  max-width: 100%;\r\n  max-height: 500px;\r\n  margin-bottom: 2em;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

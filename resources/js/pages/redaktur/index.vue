@@ -243,6 +243,7 @@ export default {
           "Avatar size should be less than 2 MB!",
       ],
       url: null,
+      fotoLama: null,
     };
   },
   computed: {
@@ -286,6 +287,7 @@ export default {
       this.url = null;
     },
     editItem(item) {
+      this.url = null;
       this.form.clearErrors();
       this.form.redakturNama = item.redakturNama;
       this.form.redakturEmail = item.redakturEmail;
@@ -296,8 +298,17 @@ export default {
       this.form.redakturProdi = item.redakturProdi;
       this.form.redakturKuliah = item.redakturKuliah;
       this.form.redakturMapaba = item.redakturMapaba;
-      this.form.redakturFoto = item.redakturFoto;
-      this.url = item.redakturFoto;
+      const config = { responseType: "blob" };
+      axios
+        .get("/storage/redaktur/" + item.redakturFoto, config)
+        .then((response) => {
+          this.form.redakturFoto = new File(
+            [response.data],
+            item.redakturFoto,
+            { type: response.type }
+          );
+        });
+      this.url = "/storage/redaktur/" + item.redakturFoto;
       this.isUpdate = true;
       this.itemId = item.id;
       this.dialog = true;
