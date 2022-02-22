@@ -27,19 +27,27 @@ class RedakturController extends Controller
 
     public function store(Request $request)
     {
-        ddd($request->redakturFoto->hashName());
+        // ddd(time() . "." . $request->redakturFoto->extension());
         $data = $this->validate($request, [
             'redakturNama' => 'required|string',
             'redakturEmail' => 'required|email',
-            'redakturNomor' => 'required|string',
+            'redakturNomor' => 'required|numeric',
             'redakturAlamat' => 'required|string',
             'redakturUniv' => 'required|string',
             'redakturFakultas' => 'required|string',
             'redakturProdi' => 'required|string',
             'redakturKuliah' => 'required|integer',
             'redakturMapaba' => 'required|integer',
-            'redakturFoto' => 'image|file|max:2000',
+            'redakturFoto' => 'image|nullable|file|max:2000',
         ]);
+        $file = $request->file('redakturFoto');
+        if ($file) {
+            $filename = time() . "." . $file->extension();
+            $file->storeAs('redaktur', $filename);
+            $data['redakturFoto'] = $filename;
+        } else {
+            $data['redakturFoto'] = 'default.jpg';
+        }
         Redaktur::create($data);
         return redirect()->back()->with('message', [
             'type' => 'success',

@@ -35,6 +35,10 @@
       <template #[`item.index`]="{ index }">
         {{ (options.page - 1) * options.itemsPerPage + index + 1 }}
       </template>
+      <template #[`item.image`]="{ item }">
+        <v-img max-width="50" :src="'storage/redaktur/' + item.redakturFoto">
+        </v-img>
+      </template>
       <template #[`item.action`]="{ item }">
         <v-btn x-small color="yellow" @click="editItem(item)">
           <v-icon small> mdi-pencil </v-icon>
@@ -67,7 +71,7 @@
               dense
             />
             <v-text-field
-              v-model.number="form.redakturNomor"
+              v-model="form.redakturNomor"
               label="Nomor WA"
               :error-messages="form.errors.redakturNomor"
               outlined
@@ -193,6 +197,7 @@ export default {
     return {
       headers: [
         { text: "No", value: "index", sortable: false },
+        { text: "Foto", value: "image", sortable: false },
         { text: "Nama Lengkap", value: "redakturNama" },
         { text: "Kampus", value: "redakturUniv" },
         { text: "Tanggal Buat", value: "created_at" },

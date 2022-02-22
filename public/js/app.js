@@ -3403,6 +3403,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["items"],
@@ -3414,6 +3418,10 @@ __webpack_require__.r(__webpack_exports__);
       headers: [{
         text: "No",
         value: "index",
+        sortable: false
+      }, {
+        text: "Foto",
+        value: "image",
         sortable: false
       }, {
         text: "Nama Lengkap",
@@ -31863,6 +31871,20 @@ var render = function() {
               }
             },
             {
+              key: "item.image",
+              fn: function(ref) {
+                var item = ref.item
+                return [
+                  _c("v-img", {
+                    attrs: {
+                      "max-width": "50",
+                      src: "storage/redaktur/" + item.redakturFoto
+                    }
+                  })
+                ]
+              }
+            },
+            {
               key: "item.action",
               fn: function(ref) {
                 var item = ref.item
@@ -31987,7 +32009,7 @@ var render = function() {
                         model: {
                           value: _vm.form.redakturNomor,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "redakturNomor", _vm._n($$v))
+                            _vm.$set(_vm.form, "redakturNomor", $$v)
                           },
                           expression: "form.redakturNomor"
                         }
