@@ -235,6 +235,7 @@ export default {
         redakturKuliah: null,
         redakturMapaba: null,
         redakturFoto: null,
+        _method: null,
       }),
       rules: [
         (value) =>
@@ -243,7 +244,6 @@ export default {
           "Avatar size should be less than 2 MB!",
       ],
       url: null,
-      fotoLama: null,
     };
   },
   computed: {
@@ -298,17 +298,19 @@ export default {
       this.form.redakturProdi = item.redakturProdi;
       this.form.redakturKuliah = item.redakturKuliah;
       this.form.redakturMapaba = item.redakturMapaba;
-      const config = { responseType: "blob" };
-      axios
-        .get("/storage/redaktur/" + item.redakturFoto, config)
-        .then((response) => {
-          this.form.redakturFoto = new File(
-            [response.data],
-            item.redakturFoto,
-            { type: response.type }
-          );
-        });
       this.url = "/storage/redaktur/" + item.redakturFoto;
+      if (item.redakturFoto !== "default.png") {
+        const config = { responseType: "blob" };
+        axios
+          .get("/storage/redaktur/" + item.redakturFoto, config)
+          .then((response) => {
+            this.form.redakturFoto = new File(
+              [response.data],
+              item.redakturFoto,
+              { type: response.type }
+            );
+          });
+      }
       this.isUpdate = true;
       this.itemId = item.id;
       this.dialog = true;
@@ -328,7 +330,8 @@ export default {
     },
     submit() {
       if (this.isUpdate) {
-        this.form.put(route("redaktur.update", this.itemId), {
+        this.form._method = "PUT";
+        this.form.post(route("redaktur.update", this.itemId), {
           preverseScroll: true,
           onSuccess: () => {
             this.isLoading = false;

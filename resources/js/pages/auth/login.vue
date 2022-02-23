@@ -51,17 +51,22 @@
                       Forgot Password?
                     </Link>
                   </div>
-                  <v-btn :loading="form.processing" type="submit" block color="primary" class="mt-3"
+                  <v-btn
+                    :loading="form.processing"
+                    type="submit"
+                    block
+                    color="primary"
+                    class="mt-3"
                     >Login</v-btn
                   >
                 </v-form>
               </v-card-text>
-              <v-card-text
+              <!-- <v-card-text
                 class="d-flex align-center justify-center flex-wrap mt-2"
               >
                 <span class="me-2"> New on our platform? </span>
                 <Link :href="route('register')"> Create an account </Link>
-              </v-card-text>
+              </v-card-text> -->
             </v-card>
           </v-col>
         </v-row>
@@ -72,7 +77,7 @@
 
 <script>
 import ApplicationLogo from "../../components/ApplicationLogo.vue";
-import GuestLayout from "../../layouts/GuestLayout.vue"
+import GuestLayout from "../../layouts/GuestLayout.vue";
 
 export default {
   components: { ApplicationLogo, GuestLayout },

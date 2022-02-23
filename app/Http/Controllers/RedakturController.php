@@ -28,7 +28,7 @@ class RedakturController extends Controller
 
     public function store(Request $request)
     {
-        // ddd(time() . "." . $request->redakturFoto->extension());
+        // ddd($request);
         $data = $this->validate($request, [
             'redakturNama' => 'required|string',
             'redakturEmail' => 'required|email',
@@ -58,7 +58,7 @@ class RedakturController extends Controller
 
     public function update(Redaktur $redaktur, Request $request)
     {
-        ddd($request);
+        // ddd($request);
         $data = $this->validate($request, [
             'redakturNama' => 'required|string',
             'redakturEmail' => 'required|email',
@@ -72,15 +72,21 @@ class RedakturController extends Controller
             'redakturFoto' => 'image|nullable|file|max:2000',
         ]);
         $file = $request->file('redakturFoto');
+        // ddd($file);
         if ($file) {
-            if (!$redaktur->redakturFoto == "default.png") {
+            if ($redaktur->redakturFoto !== "default.png") {
                 Storage::delete('redaktur/' . $redaktur->redakturFoto);
             }
             $filename = time() . "." . $file->extension();
             $file->storeAs('redaktur', $filename);
             $data['redakturFoto'] = $filename;
         } else {
-            $data['redakturFoto'] = $redaktur->redakturFoto;
+            if ($redaktur->redakturFoto == "default.png") {
+                $data['redakturFoto'] = $redaktur->redakturFoto;
+            } else {
+                Storage::delete('redaktur/' . $redaktur->redakturFoto);
+                $data['redakturFoto'] = "default.png";
+            }
         }
         $redaktur->update($data);
         return redirect()->back()->with('message', [
@@ -91,6 +97,9 @@ class RedakturController extends Controller
 
     public function destroy(Redaktur $redaktur)
     {
+        if ($redaktur->redakturFoto !== "default.png") {
+            Storage::delete('redaktur/' . $redaktur->redakturFoto);
+        }
         $redaktur->delete();
         return redirect()->back()->with('message', [
             'type' => 'success',

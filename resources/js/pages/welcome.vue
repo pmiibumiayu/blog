@@ -10,9 +10,9 @@
         <Link :href="route('login')">
           <v-btn text>Masuk</v-btn>
         </Link>
-        <Link :href="route('register')">
+        <!-- <Link :href="route('register')">
           <v-btn text>Daftar</v-btn>
-        </Link>
+        </Link> -->
       </div>
     </v-app-bar>
     <v-main>

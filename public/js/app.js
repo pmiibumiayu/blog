@@ -2306,6 +2306,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3465,13 +3470,13 @@ __webpack_require__.r(__webpack_exports__);
         redakturProdi: null,
         redakturKuliah: null,
         redakturMapaba: null,
-        redakturFoto: null
+        redakturFoto: null,
+        _method: null
       }),
       rules: [function (value) {
         return !value || value.size < 2000000 || "Avatar size should be less than 2 MB!";
       }],
-      url: null,
-      fotoLama: null
+      url: null
     };
   },
   computed: {
@@ -3532,15 +3537,19 @@ __webpack_require__.r(__webpack_exports__);
       this.form.redakturProdi = item.redakturProdi;
       this.form.redakturKuliah = item.redakturKuliah;
       this.form.redakturMapaba = item.redakturMapaba;
-      var config = {
-        responseType: "blob"
-      };
-      axios.get("/storage/redaktur/" + item.redakturFoto, config).then(function (response) {
-        _this2.form.redakturFoto = new File([response.data], item.redakturFoto, {
-          type: response.type
-        });
-      });
       this.url = "/storage/redaktur/" + item.redakturFoto;
+
+      if (item.redakturFoto !== "default.png") {
+        var config = {
+          responseType: "blob"
+        };
+        axios.get("/storage/redaktur/" + item.redakturFoto, config).then(function (response) {
+          _this2.form.redakturFoto = new File([response.data], item.redakturFoto, {
+            type: response.type
+          });
+        });
+      }
+
       this.isUpdate = true;
       this.itemId = item.id;
       this.dialog = true;
@@ -3564,13 +3573,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       if (this.isUpdate) {
-        this.form.put(route("redaktur.update", this.itemId), {
+        this.form._method = "PUT";
+        this.form.post(route("redaktur.update", this.itemId), {
           preverseScroll: true,
           onSuccess: function onSuccess() {
             _this4.isLoading = false;
             _this4.dialog = false;
             _this4.isUpdate = false;
-            _this4.itemId = null; // this.form.reset();
+            _this4.itemId = null;
+
+            _this4.form.reset();
           }
         });
       } else {
@@ -30375,26 +30387,6 @@ var render = function() {
                               )
                             ],
                             1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-card-text",
-                            {
-                              staticClass:
-                                "d-flex align-center justify-center flex-wrap mt-2"
-                            },
-                            [
-                              _c("span", { staticClass: "me-2" }, [
-                                _vm._v(" New on our platform? ")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "Link",
-                                { attrs: { href: _vm.route("register") } },
-                                [_vm._v(" Create an account ")]
-                              )
-                            ],
-                            1
                           )
                         ],
                         1
@@ -32672,13 +32664,6 @@ var render = function() {
                     "Link",
                     { attrs: { href: _vm.route("login") } },
                     [_c("v-btn", { attrs: { text: "" } }, [_vm._v("Masuk")])],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "Link",
-                    { attrs: { href: _vm.route("register") } },
-                    [_c("v-btn", { attrs: { text: "" } }, [_vm._v("Daftar")])],
                     1
                   )
                 ],
